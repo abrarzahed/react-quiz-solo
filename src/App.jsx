@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import Quiz from "../components/Quiz";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [quizzes, setQuizzes] = useState(false);
+
+  function startQuiz() {
+    setQuizzes(true);
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <main className="app">
+      {quizzes && <Header />}
+      <img className="blob blob1" src="../images/blob1.png" alt="" />
+
+      {!quizzes && (
+        <div className="interface">
+          <h2>Quizzical</h2>
+          <p>Are you ready to answer some random quiz questions?</p>
+          <button onClick={startQuiz} className="btn-footer">
+            Start Quiz
+          </button>
+        </div>
+      )}
+
+      {quizzes && (
+        <div className="quiz-container">
+          <Quiz />
+          <Quiz />
+          <Quiz />
+          <Quiz />
+          <Quiz />
+        </div>
+      )}
+
+      <img className="blob blob2" src="../images/blob2.png" alt="" />
+
+      {quizzes && <Footer />}
+    </main>
+  );
 }
 
-export default App
+export default App;
