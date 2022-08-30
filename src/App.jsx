@@ -28,6 +28,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.results);
         setQuizzes(
           data.results.map((quiz) => {
             const randomIndex = Math.floor(Math.random() * 4);
