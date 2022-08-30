@@ -70,6 +70,19 @@ header h1 {
   display: grid;
   gap: 1rem;
   padding-bottom: 1rem;
+  position: relative;
+  isolation: isolate;
+}
+.mark {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  top: 0;
+  right: -35px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  z-index: -1;
 }
 .question {
   color: #293264;

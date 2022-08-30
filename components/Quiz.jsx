@@ -10,6 +10,7 @@ export default function Quiz(props) {
         background: "white",
       };
     }
+
     return (
       <button
         style={styles}
@@ -27,6 +28,7 @@ export default function Quiz(props) {
   });
   return (
     <section className="quiz">
+      <div className="mark"></div>
       <h3 className="question">{props.question}</h3>
       <div className="options">{answersJsx}</div>
     </section>
