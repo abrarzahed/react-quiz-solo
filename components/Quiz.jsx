@@ -1,16 +1,34 @@
-export default function Quiz() {
+export default function Quiz(props) {
+  const answersJsx = props.answers.map((answer) => {
+    let styles;
+    if (answer.isSelected) {
+      styles = {
+        background: "#D6DBF5",
+      };
+    } else {
+      styles = {
+        background: "white",
+      };
+    }
+    return (
+      <button
+        style={styles}
+        className={
+          props.isChecking && props.correct_answer === answer.value
+            ? "correct-answer option"
+            : "option"
+        }
+        key={answer.id}
+        onClick={() => props.selectAnswer(props.id, answer.id)}
+      >
+        {answer.value}
+      </button>
+    );
+  });
   return (
     <section className="quiz">
-      <h3 className="question">
-        Which best selling toy of 1983 caused hysteria, resulting in riots
-        breaking in stores?
-      </h3>
-      <div className="options">
-        <button className="option">Cabbage Patch Kids</button>
-        <button className="option">Transformers</button>
-        <button className="option">Care Bears</button>
-        <button className="option">Rubik’s Cube</button>
-      </div>
+      <h3 className="question">{props.question}</h3>
+      <div className="options">{answersJsx}</div>
     </section>
   );
 }
